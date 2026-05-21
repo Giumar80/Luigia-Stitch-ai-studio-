@@ -42,7 +42,7 @@ export const TopBar: FC = () => {
           </button>
         </nav>
       </div>
-      <h1 onClick={() => setView('home')} className="font-display text-2xl md:text-3xl tracking-widest text-chocolate uppercase cursor-pointer">Luigia Cake</h1>
+      <h1 onClick={() => setView('home')} className="font-display text-2xl md:text-3xl tracking-widest text-chocolate uppercase cursor-pointer"><img src="/Luigia-Stitch-ai-studio-/logo-1764352011.jpg" alt="Luigia Cake" className="h-12 md:h-14 w-auto object-contain" /></h1>
       <div className="flex items-center gap-4">
         <span className="hidden md:inline text-xs uppercase tracking-widest font-bold text-chocolate/70">334 791 4133</span>
         <button className="text-chocolate hover:text-gold transition-colors duration-300 hidden md:block">
