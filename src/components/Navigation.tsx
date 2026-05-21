@@ -8,6 +8,22 @@ const TikTokIcon: FC = () => (
   </svg>
 );
 
+export const SocialShortcuts: FC = () => {
+  return (
+    <div className="fixed right-4 bottom-28 md:bottom-8 z-50 flex flex-col gap-3">
+      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/90 backdrop-blur-sm border border-outline/30 rounded-full flex items-center justify-center text-chocolate hover:bg-gold hover:text-white hover:border-gold shadow-lg transition-all hover:scale-110" title="Instagram">
+        <Instagram size={20} strokeWidth={1.5}/>
+      </a>
+      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/90 backdrop-blur-sm border border-outline/30 rounded-full flex items-center justify-center text-chocolate hover:bg-gold hover:text-white hover:border-gold shadow-lg transition-all hover:scale-110" title="Facebook">
+        <Facebook size={20} strokeWidth={1.5}/>
+      </a>
+      <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/90 backdrop-blur-sm border border-outline/30 rounded-full flex items-center justify-center text-chocolate hover:bg-gold hover:text-white hover:border-gold shadow-lg transition-all hover:scale-110" title="TikTok">
+        <TikTokIcon />
+      </a>
+    </div>
+  );
+};
+
 export const TopBar: FC = () => {
   const { setView, cart, setCustomCakeModalOpen } = useAppContext();
   const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0);
