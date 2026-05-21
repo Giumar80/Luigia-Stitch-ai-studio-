@@ -7,6 +7,7 @@ import { ReactNode } from 'react';
 import { AnimatePresence } from 'motion/react';
 import { AppProvider, useAppContext } from './store';
 import { TopBar, MobileNav, Footer } from './components/Navigation';
+import { CustomCakeModal } from './components/CustomCakeModal';
 import { HomeView } from './views/HomeView';
 import { CatalogView } from './views/CatalogView';
 import { ProductView } from './views/ProductView';
@@ -22,6 +23,7 @@ function MainLayout({ children }: { children: ReactNode }) {
       </main>
       <Footer />
       <MobileNav />
+      <CustomCakeModal />
     </div>
   );
 }

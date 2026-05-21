@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, ReactNode } from 'react';
 
-export type Category = 'Torte' | 'Biscotti' | 'Piccola Pasticceria' | 'Eventi' | 'Idee Regalo';
+export type Category = 'Torte' | 'Biscotti' | 'Eventi' | 'Idee Regalo';
 
 export interface Product {
   id: string;
@@ -68,16 +68,6 @@ export const PRODUCTS: Product[] = [
     isPopular: true
   },
   {
-    id: "macarons",
-    name: "Scatola di Macarons (12 pz)",
-    category: "Piccola Pasticceria",
-    description: "Delicati gusci di mandorla racchiudono morbide ganache nei gusti più raffinati.",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBE3sTRq6NdFdWRhmtq1SE6jIOVPRAAU-s4AdyZzt7liknvDahG0tN5PTEbCZWhb1XzsAOH3_CrlkcVxbJSgc7-Np9EfgeiUFEPCnx5rhqHDTirkx7r-NboFOwrrfhwAdnqoUsS7fWcEfufWwGHC-NXIH22djntJSoNRXksOUcXxFmClxs2tnTY2bq0a9uN-eSSyFlRWNNGxVQTAaxwB2YQ5LiEBh0obRewbv3-ovs3rs-IGb57ny6IlXro_S6tCuu1slWqIVyjZV4",
-    price: 24.00,
-    tags: ["Selezione dello chef"],
-    isPopular: false
-  },
-  {
     id: "torta-cioccolato",
     name: "Torta al Cioccolato",
     category: "Torte",
@@ -134,6 +124,9 @@ interface AppContextType {
   addToCart: (product: Product, quantity: number) => void;
   updateQuantity: (productId: string, quantity: number) => void;
   removeFromCart: (productId: string) => void;
+  clearCart: () => void;
+  isCustomCakeModalOpen: boolean;
+  setCustomCakeModalOpen: (open: boolean) => void;
 }
 
 export const AppContext = createContext<AppContextType | null>(null);
@@ -142,6 +135,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [view, setViewState] = useState<ViewType>('home');
   const [activePayload, selectPayload] = useState<any>(null);
   const [cart, setCart] = useState<CartItem[]>([]);
+  const [isCustomCakeModalOpen, setCustomCakeModalOpen] = useState(false);
 
   const setView = (newView: ViewType, payload?: any) => {
     setViewState(newView);
@@ -175,8 +169,23 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     setCart(prev => prev.filter(item => item.product.id !== productId));
   };
 
+  const clearCart = () => {
+    setCart([]);
+  };
+
   return (
-    <AppContext.Provider value={{ view, setView, activePayload, cart, addToCart, updateQuantity, removeFromCart }}>
+    <AppContext.Provider value={{ 
+      view, 
+      setView, 
+      activePayload, 
+      cart, 
+      addToCart, 
+      updateQuantity, 
+      removeFromCart,
+      clearCart,
+      isCustomCakeModalOpen, 
+      setCustomCakeModalOpen 
+    }}>
       {children}
     </AppContext.Provider>
   );

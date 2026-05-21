@@ -4,10 +4,10 @@ import { Plus } from 'lucide-react';
 import { useAppContext, PRODUCTS, Category } from '../store';
 
 export const CatalogView: FC = () => {
-  const { setView, addToCart } = useAppContext();
+  const { setView, addToCart, setCustomCakeModalOpen } = useAppContext();
   const [activeFilter, setActiveFilter] = useState<'Tutti' | Category>('Tutti');
 
-  const filters = ['Tutti', 'Torte', 'Biscotti', 'Piccola Pasticceria'];
+  const filters = ['Tutti', 'Torte', 'Biscotti', 'Eventi', 'Idee Regalo'];
 
   const filteredProducts = activeFilter === 'Tutti' 
     ? PRODUCTS 
@@ -70,12 +70,12 @@ export const CatalogView: FC = () => {
                 <div onClick={() => setView('product', product.id)} className="flex-1">
                   <span className="text-[10px] uppercase tracking-widest font-bold text-chocolate/50 mb-2 block">{product.category}</span>
                   <h3 className="font-display text-2xl text-chocolate mb-2">{product.name}</h3>
-                  <p className="text-chocolate font-bold text-lg">€{product.price.toFixed(2)}</p>
+                  <p className="text-gold uppercase text-[10px] tracking-widest font-bold">Lotto Artigianale • Su Ordinazione</p>
                 </div>
                 <button 
                   onClick={(e) => { e.stopPropagation(); addToCart(product, 1); }}
                   className="w-12 h-12 flex items-center justify-center rounded-full bg-surface hover:bg-chocolate hover:text-white text-chocolate transition-colors shadow-sm ml-4 shrink-0"
-                  title="Aggiungi al carrello"
+                  title="Aggiungi alla richiesta"
                 >
                   <Plus size={20} strokeWidth={1.5} />
                 </button>
@@ -92,7 +92,10 @@ export const CatalogView: FC = () => {
           <p className="text-lg text-chocolate/80 max-w-2xl mx-auto mb-10 leading-relaxed">
             Non abbiamo magazzino. I nostri dolci vengono realizzati con ingredienti freschi solo al momento dell'ordine per garantire la massima fragranza.
           </p>
-          <button className="bg-chocolate-deep text-white px-10 py-5 text-xs font-bold uppercase tracking-widest hover:bg-chocolate transition-colors shadow-lg">
+          <button 
+            onClick={() => setCustomCakeModalOpen(true)}
+            className="bg-chocolate-deep text-white px-10 py-5 text-xs font-bold uppercase tracking-widest hover:bg-chocolate transition-all hover:scale-[1.01] shadow-lg"
+          >
             Richiedi Torta Personalizzata
           </button>
         </div>

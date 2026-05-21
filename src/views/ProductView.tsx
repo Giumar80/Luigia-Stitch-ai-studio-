@@ -57,7 +57,7 @@ export const ProductView: FC = () => {
               {product.name}
             </h1>
             
-            <p className="text-2xl text-chocolate font-display mb-6">€{product.price.toFixed(2)}</p>
+            <p className="text-gold uppercase text-xs tracking-widest font-bold mb-6">Su Prenotazione • Prodotto Fresco</p>
             
             <div className="w-16 h-px bg-gold mb-8"></div>
             
@@ -93,7 +93,7 @@ export const ProductView: FC = () => {
                 className="flex-1 py-5 px-6 bg-chocolate-deep text-white text-xs font-bold uppercase tracking-widest hover:bg-chocolate transition-colors shadow-lg flex justify-center items-center gap-3"
               >
                 <ShoppingBag size={18} />
-                Aggiungi al Carrello
+                Aggiungi alla Richiesta
               </button>
             </div>
           </div>

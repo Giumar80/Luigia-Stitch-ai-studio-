@@ -1,9 +1,15 @@
 import { FC, ReactNode } from 'react';
-import { Menu, ShoppingBag, Search, Store, CakeSlice, Sparkles, User, Mail, Share2, MessageCircle, Phone } from 'lucide-react';
+import { Menu, ShoppingBag, Search, Store, CakeSlice, Sparkles, User, Phone, Instagram, Facebook } from 'lucide-react';
 import { useAppContext } from '../store';
 
+const TikTokIcon: FC = () => (
+  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.03 1.62 4.19.98 1.15 2.37 1.84 3.86 2.01v3.9c-1.24-.07-2.45-.52-3.47-1.25-.91-.65-1.61-1.57-2.01-2.61-.06 2.9-.04 5.8-.05 8.7-.08 2.06-.72 4.13-1.92 5.8-1.55 2.19-4.24 3.51-6.93 3.25-2.28-.21-4.46-1.54-5.59-3.53-1.42-2.39-1.39-5.63.1-7.98 1.35-2.14 3.89-3.41 6.43-3.08.01 1.34 0 2.67 0 4.01-1.48-.44-3.14.15-3.9 1.48-.79 1.28-.53 3.09.58 4.07.96.86 2.41.97 3.48.27 1.05-.65 1.63-1.91 1.56-3.14-.02-3.78-.01-7.56-.02-11.34z"/>
+  </svg>
+);
+
 export const TopBar: FC = () => {
-  const { setView, cart } = useAppContext();
+  const { setView, cart, setCustomCakeModalOpen } = useAppContext();
   const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
@@ -12,10 +18,12 @@ export const TopBar: FC = () => {
         <button className="text-chocolate hover:text-gold transition-colors duration-300">
           <Menu size={24} strokeWidth={1.5} />
         </button>
-        <nav className="hidden md:flex gap-8">
+        <nav className="hidden md:flex gap-8 items-center">
           <button onClick={() => setView('home')} className="text-xs uppercase tracking-widest font-bold text-chocolate hover:text-gold transition-colors">Bottega</button>
           <button onClick={() => setView('catalog')} className="text-xs uppercase tracking-widest font-bold text-chocolate/70 hover:text-gold transition-colors">Dolci</button>
-          <button className="text-xs uppercase tracking-widest font-bold text-chocolate/70 hover:text-gold transition-colors">Ispirazione</button>
+          <button onClick={() => setCustomCakeModalOpen(true)} className="text-[10px] uppercase tracking-widest font-bold text-white bg-gold/90 px-3.5 py-1.5 rounded-sm shadow-sm hover:bg-chocolate transition-colors flex items-center gap-1.5">
+            <CakeSlice size={13} strokeWidth={2}/> Torta Personalizzata
+          </button>
         </nav>
       </div>
       <h1 onClick={() => setView('home')} className="font-display text-2xl md:text-3xl tracking-widest text-chocolate uppercase cursor-pointer">Luigia Cake</h1>
@@ -38,7 +46,7 @@ export const TopBar: FC = () => {
 };
 
 export const MobileNav: FC = () => {
-  const { setView, view } = useAppContext();
+  const { setView, view, setCustomCakeModalOpen } = useAppContext();
 
   return (
     <nav className="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-cream border-t border-outline/30 shadow-[0_-4px_20px_rgba(27,28,28,0.06)] rounded-t-3xl">
@@ -50,9 +58,9 @@ export const MobileNav: FC = () => {
         <CakeSlice size={24} strokeWidth={view === 'catalog' ? 2 : 1.5} className="mb-1" />
         <span className="text-[10px] uppercase tracking-widest font-bold">Dolci</span>
       </button>
-      <button className="flex flex-col items-center justify-center transition-transform active:scale-95 text-chocolate/50">
-        <Sparkles size={24} strokeWidth={1.5} className="mb-1" />
-        <span className="text-[10px] uppercase tracking-widest font-bold">Idee</span>
+      <button onClick={() => setCustomCakeModalOpen(true)} className="flex flex-col items-center justify-center transition-transform active:scale-95 text-chocolate/50 hover:text-gold">
+        <Sparkles size={24} strokeWidth={1.5} className="mb-1 text-gold" />
+        <span className="text-[10px] uppercase tracking-widest font-bold text-gold">Torta</span>
       </button>
       <button className="flex flex-col items-center justify-center transition-transform active:scale-95 text-chocolate/50">
         <User size={24} strokeWidth={1.5} className="mb-1" />
@@ -71,9 +79,16 @@ export const Footer: FC = () => {
           <p className="text-sm text-chocolate/80 mb-6 leading-relaxed">
             Pasticceria artigianale che unisce le radici irpine con il gusto raffinato di Milano. Ogni creazione è un'emozione da gustare.
           </p>
-          <div className="flex gap-4">
-            <button className="text-chocolate hover:text-gold transition-colors"><Share2 size={20} strokeWidth={1.5}/></button>
-            <button className="text-chocolate hover:text-gold transition-colors"><MessageCircle size={20} strokeWidth={1.5}/></button>
+          <div className="flex gap-4 items-center">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-chocolate hover:text-gold transition-colors animate-pulse" title="Instagram">
+              <Instagram size={20} strokeWidth={1.5}/>
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-chocolate hover:text-gold transition-colors" title="Facebook">
+              <Facebook size={20} strokeWidth={1.5}/>
+            </a>
+            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="text-chocolate hover:text-gold transition-colors" title="TikTok">
+              <TikTokIcon />
+            </a>
           </div>
         </div>
         <div>

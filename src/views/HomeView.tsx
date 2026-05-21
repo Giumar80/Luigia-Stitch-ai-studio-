@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useRef } from 'react';
 import { motion } from 'motion/react';
 import { ChevronDown, ArrowRight, ArrowLeft, Plus, Truck, Leaf, Mail } from 'lucide-react';
 import { useAppContext, PRODUCTS } from '../store';
@@ -6,6 +6,17 @@ import { useAppContext, PRODUCTS } from '../store';
 export const HomeView: FC = () => {
   const { setView } = useAppContext();
   const popularProducts = PRODUCTS.filter(p => p.isPopular);
+  const sliderRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (sliderRef.current) {
+      const scrollAmount = 380;
+      sliderRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="pb-16 pt-20">
@@ -79,15 +90,15 @@ export const HomeView: FC = () => {
           <div onClick={() => setView('catalog')} className="md:col-span-4 md:row-span-2 relative group overflow-hidden bg-surface-dim rounded-sm cursor-pointer min-h-[400px]">
             <img 
               src="https://lh3.googleusercontent.com/aida/ADBb0ugfomQkIW_vx8oN0oOpESQecF1Y7cuZAuwqo8h8gAeg2QkqPYnfigLKOhU9c-iBnrHpjCzWECUpa0Zn-BHprNvmPaAu4JhvAqqhKmCl5ZV8wBXUxtPDwZKQj7_W-ay4uXY4KD9V8vzmy1D9q3I8eEj2p-ldb8j0zh37XXfUsqIQCOjnH_VOzwl866k-IU19nJ1oa1PWVvIIk-K8kHuCIqsbM_KKWW4i4p6WMucnmAkhL82T09gFqmiZtPU" 
-              className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="Piccola Pasticceria" 
+              className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="Biscotti Tradizionali" 
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/10"></div>
             <div className="absolute top-8 left-8">
-              <h4 className="font-display text-3xl text-white mb-3">Piccola<br/>Pasticceria</h4>
-              <span className="text-[10px] uppercase font-bold bg-sage/90 text-white px-3 py-1.5 rounded-sm tracking-widest">Novità</span>
+              <h4 className="font-display text-3xl text-white mb-3">Biscotti<br/>Tradizionali</h4>
+              <span className="text-[10px] uppercase font-bold bg-gold/90 text-white px-3 py-1.5 rounded-sm tracking-widest">La Storia</span>
             </div>
             <div className="absolute bottom-8 left-8">
-              <span className="text-[10px] uppercase tracking-widest font-bold text-white border-b border-white pb-1">Esplora i morsi</span>
+              <span className="text-[10px] uppercase tracking-widest font-bold text-white border-b border-white pb-1">Esplora i biscotti</span>
             </div>
           </div>
           <div onClick={() => setView('catalog')} className="md:col-span-4 md:row-span-1 relative group overflow-hidden bg-surface-dim rounded-sm cursor-pointer aspect-square md:aspect-auto">
@@ -123,15 +134,26 @@ export const HomeView: FC = () => {
             <p className="text-chocolate/70 italic text-lg opacity-80">I gusti che hanno conquistato i nostri clienti</p>
           </div>
           <div className="hidden md:flex gap-3">
-            <button className="w-12 h-12 rounded-full border border-outline flex items-center justify-center text-chocolate hover:bg-chocolate hover:text-white transition-all">
+            <button 
+              onClick={() => scroll('left')}
+              className="w-12 h-12 rounded-full border border-outline flex items-center justify-center text-chocolate hover:bg-chocolate hover:text-white transition-all"
+              title="Precedente"
+            >
               <ArrowLeft size={20} strokeWidth={1.5} />
             </button>
-            <button className="w-12 h-12 rounded-full border border-outline flex items-center justify-center text-chocolate hover:bg-chocolate hover:text-white transition-all">
+            <button 
+              onClick={() => scroll('right')}
+              className="w-12 h-12 rounded-full border border-outline flex items-center justify-center text-chocolate hover:bg-chocolate hover:text-white transition-all"
+              title="Successivo"
+            >
               <ArrowRight size={20} strokeWidth={1.5} />
             </button>
           </div>
         </div>
-        <div className="flex gap-6 overflow-x-auto pb-12 px-4 md:px-16 scroll-pl-16 snap-x snap-mandatory hide-scrollbar">
+        <div 
+          ref={sliderRef}
+          className="flex gap-6 overflow-x-auto pb-12 px-4 md:px-16 scroll-pl-16 snap-x snap-mandatory hide-scrollbar"
+        >
           {popularProducts.map(product => (
             <div key={product.id} className="min-w-[280px] md:min-w-[340px] bg-white group border border-outline/20 rounded-sm overflow-hidden snap-start cursor-pointer transition-shadow hover:shadow-xl" onClick={() => setView('product', product.id)}>
               <div className="relative overflow-hidden aspect-[4/3] bg-surface-dim">
@@ -141,7 +163,7 @@ export const HomeView: FC = () => {
                 <span className="text-[10px] uppercase tracking-widest font-bold text-sage mb-3 block">{product.category}</span>
                 <h5 className="font-display text-2xl text-chocolate mb-4 leading-tight">{product.name}</h5>
                 <div className="flex justify-between items-center mt-6 pt-6 border-t border-outline/20">
-                  <span className="font-bold text-lg text-chocolate">€{product.price.toFixed(2)}</span>
+                  <span className="text-xs uppercase tracking-wider text-gold font-bold">Su Prenotazione</span>
                   <button className="text-chocolate-deep font-bold flex items-center gap-2 group/btn hover:text-gold transition-colors">
                     <span className="text-[10px] uppercase tracking-widest">Scopri</span>
                     <Plus size={16} className="group-hover/btn:rotate-90 transition-transform duration-300" />
