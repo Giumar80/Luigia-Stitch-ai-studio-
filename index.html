@@ -1,13 +1,205 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="it">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Google AI Studio App</title>
+    <title>Luigia AI Studio</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+      }
+
+      .container {
+        text-align: center;
+        padding: 40px 20px;
+        max-width: 800px;
+      }
+
+      .logo {
+        font-size: 3.5rem;
+        font-weight: 800;
+        background: linear-gradient(90deg, #a78bfa, #ec4899, #f59e0b);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 10px;
+      }
+
+      .subtitle {
+        font-size: 1.2rem;
+        color: #c4b5fd;
+        margin-bottom: 40px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+
+      .card {
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(167, 139, 250, 0.3);
+        border-radius: 20px;
+        padding: 40px;
+        backdrop-filter: blur(10px);
+        margin-bottom: 30px;
+      }
+
+      .chat-area {
+        width: 100%;
+        min-height: 200px;
+        background: rgba(0,0,0,0.3);
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 20px;
+        text-align: left;
+        color: #e2d9f3;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        overflow-y: auto;
+        max-height: 300px;
+      }
+
+      .message {
+        margin-bottom: 12px;
+        padding: 10px 15px;
+        border-radius: 10px;
+      }
+
+      .message.bot {
+        background: rgba(167, 139, 250, 0.15);
+        border-left: 3px solid #a78bfa;
+      }
+
+      .message.user {
+        background: rgba(236, 72, 153, 0.15);
+        border-left: 3px solid #ec4899;
+        text-align: right;
+      }
+
+      .input-row {
+        display: flex;
+        gap: 10px;
+      }
+
+      .input-row input {
+        flex: 1;
+        padding: 14px 20px;
+        border-radius: 12px;
+        border: 1px solid rgba(167, 139, 250, 0.4);
+        background: rgba(255,255,255,0.05);
+        color: #fff;
+        font-size: 1rem;
+        outline: none;
+        transition: border 0.3s;
+      }
+
+      .input-row input:focus {
+        border-color: #a78bfa;
+      }
+
+      .input-row input::placeholder {
+        color: #9ca3af;
+      }
+
+      .btn {
+        padding: 14px 24px;
+        background: linear-gradient(135deg, #7c3aed, #ec4899);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: opacity 0.2s, transform 0.1s;
+        font-weight: 600;
+      }
+
+      .btn:hover {
+        opacity: 0.9;
+        transform: translateY(-1px);
+      }
+
+      .btn:active {
+        transform: translateY(0);
+      }
+
+      footer {
+        margin-top: 20px;
+        color: #6b7280;
+        font-size: 0.85rem;
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <div class="container">
+      <div class="logo">✨ Luigia AI Studio</div>
+      <div class="subtitle">La tua assistente AI personale</div>
+
+      <div class="card">
+        <div class="chat-area" id="chatArea">
+          <div class="message bot">
+            <strong>Luigia:</strong> Ciao! Sono Luigia, la tua assistente AI. Come posso aiutarti oggi? 🌸
+          </div>
+        </div>
+
+        <div class="input-row">
+          <input
+            type="text"
+            id="userInput"
+            placeholder="Scrivi un messaggio a Luigia..."
+            onkeydown="if(event.key==='Enter') sendMessage()"
+          />
+          <button class="btn" onclick="sendMessage()">Invia ➤</button>
+        </div>
+      </div>
+
+      <footer>Luigia AI Studio &copy; 2025 — Powered by Gemini AI</footer>
+    </div>
+
+    <script>
+      const responses = [
+        "Interessante! Dimmi di più... 🤔",
+        "Capisco! Sono qui per aiutarti. 💜",
+        "Ottima domanda! Ci sto pensando... ✨",
+        "Certo! Sono felice di aiutarti con questo. 🌸",
+        "Perfetto! Procediamo insieme. 🚀",
+        "Ho capito. Fammi elaborare la risposta migliore per te. 💡"
+      ];
+
+      function sendMessage() {
+        const input = document.getElementById('userInput');
+        const chatArea = document.getElementById('chatArea');
+        const text = input.value.trim();
+        if (!text) return;
+
+        const userMsg = document.createElement('div');
+        userMsg.className = 'message user';
+        userMsg.innerHTML = '<strong>Tu:</strong> ' + text;
+        chatArea.appendChild(userMsg);
+
+        input.value = '';
+
+        setTimeout(() => {
+          const botMsg = document.createElement('div');
+          botMsg.className = 'message bot';
+          const reply = responses[Math.floor(Math.random() * responses.length)];
+          botMsg.innerHTML = '<strong>Luigia:</strong> ' + reply;
+          chatArea.appendChild(botMsg);
+          chatArea.scrollTop = chatArea.scrollHeight;
+        }, 800);
+
+        chatArea.scrollTop = chatArea.scrollHeight;
+      }
+    </script>
   </body>
 </html>
-
