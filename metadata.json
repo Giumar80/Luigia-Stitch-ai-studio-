@@ -1,6 +1,6 @@
 {
-  "name": "",
-  "description": "",
+  "name": "Luigia Cake",
+  "description": "Pasticceria artigianale Luigia Cake - dolci della tradizione irpina e creazioni su misura",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
