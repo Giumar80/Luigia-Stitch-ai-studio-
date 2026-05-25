@@ -16,12 +16,13 @@ export interface Product {
 }
 
 export const PRODUCTS: Product[] = [
+  // ... (keep initial list as default)
   {
     id: "torta-luigia",
     name: "Torta Luigia",
     category: "Torte",
     description: "Pan di Spagna soffice, crema chantilly e fragoline di bosco fresche. Una sinfonia di leggerezza e tradizione.",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCKs5YlECx8GzbPTt3cPp_A00jLq7O0J8kXHtTu3tjrfh1yEpkVOJHmttVAEd_6xYEIrLxQum5ajX8ROWJyYI6J0MLu-p45IWeEtuw-r1aqis9wKBYWSFHmgoU2juSlrwu-XVzGhfbgepliZ3IcZMMYFksMpdYWe8HzFXD2EXFQOMRa8-9NfnUrNOiQuFtwmZnxG9gbbVcKykdgf4VIDKkAraaI0q0zp3soHc3Q4RGRxvyd0IhegS0GdvACdglGQRclOm4aPdve2RY",
+    image: "https://images.unsplash.com/photo-1542826438-bd32f43d626f?q=80&w=2792&auto=format&fit=crop",
     price: 45.00,
     tags: ["Prodotto Artigianale"],
     stats: "4.9 (124) Recensioni",
@@ -32,7 +33,7 @@ export const PRODUCTS: Product[] = [
     name: "Pastetta Montecalvese",
     category: "Biscotti",
     description: "Una ricetta antica tramandata da generazioni, simbolo della tradizione dolciaria di Montecalvo Irpino.",
-    image: "https://lh3.googleusercontent.com/aida/ADBb0uhwNcUC-en7NCbCd72cs002J-yFIPJl4z4wsK9mjFETOMYTT0fJ-RxSgbFRyJar5-WiMUrQLUfeGMDOOLVUk3ruxw0WnN7yQ1Ewsk6L-dJaNeHFeS8cA6pemkyfoJdaaScYwjsre-cBpV5x5iDAXvE5rLPQAq6aBXnX6udD-YxKBEjy0qu9C-7SGe6f-m_In6jVZySM9qFd1Xi67ykZG39q1Tf0ahAy5Cd-RKw_yRix0X8HHtyeVTBmAhg",
+    image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?q=80&w=2665&auto=format&fit=crop",
     price: 18.00,
     tags: ["Ingredienti locali", "Fatto a mano", "Senza conservanti"],
     isPopular: true
@@ -42,7 +43,7 @@ export const PRODUCTS: Product[] = [
     name: "Cantucci alle mandorle",
     category: "Biscotti",
     description: "Croccanti e profumati, perfetti da accompagnare a un vino dolce o un caffè. Realizzati con mandorle selezionate.",
-    image: "https://lh3.googleusercontent.com/aida/ADBb0ujUb0DotiBBI1k9-noP0rFj4g6vIDxdI1m3Q_kmQvKHseYQ4ZOptrEaWkYMNwKY3jCRj9g77KmYz2wwqO-4k0hts_QRkY_UE8nJ5sl2PtgVLJaRgMlNndqCeGaQx6vaSPznZFjTIwf_11EDGYplm_LGmy1Io04PSsPpabXfY-Qw3NI29VPpvlNFFF7afvHiID8UD1zdVU8HTplrGPjbRJK1MKUrtXdCpPxcNSwcbP2R9kCj-sxLJKZOjA8",
+    image: "https://images.unsplash.com/photo-1603532648955-039310d9ed75?q=80&w=2574&auto=format&fit=crop",
     price: 15.00,
     tags: ["Mandorle tostate", "Tradizione Irpina"],
     isPopular: true
@@ -52,7 +53,7 @@ export const PRODUCTS: Product[] = [
     name: "Chiffon Cake",
     category: "Torte",
     description: "Soffice come una nuvola, la nostra Chiffon Cake è il dolce ideale per ogni momento della giornata.",
-    image: "https://lh3.googleusercontent.com/aida/ADBb0uhrzew3m5_j8UVGRco5-HAhhY59ABHGd4cRem4-McH9Rodai5cCQFHrpeiPrw2INo7gOnMU1JSxm4Vu8JA5Lkokv944fslc3rchg56pmCkC7isB1VqGES-lpwPyXcAPYVKSD5n69Vq_XDQ9zZGhOUtIYlVtAAxCgpMU2Nt9SNW89pngxCEOC9mjCMOzyVwHWllxyMPDUOT_1rW55-NcAAy_1UNkzD17R34-qDd7Wh85CJEJjNtLWd-15-w",
+    image: "https://images.unsplash.com/photo-1571115177098-24ec42ed204d?q=80&w=2574&auto=format&fit=crop",
     price: 35.00,
     tags: ["Estremamente soffice", "Ingredienti freschi"],
     isPopular: true
@@ -62,7 +63,7 @@ export const PRODUCTS: Product[] = [
     name: "Pipatielli",
     category: "Biscotti",
     description: "Biscotti rustici tradizionali, ricchi di sapore e perfetti per una pausa golosa in ogni momento della giornata.",
-    image: "https://lh3.googleusercontent.com/aida/ADBb0ujXHASB0zYrXoB-ZxbiWlzjhy-GRVFe3_Go-KK2HfZLd-Gq-NxzILrCKfp9euNVzHlRwhNijQ4LHdydO10TFOnN6hBpwOkRse1_LrtAbQ3RNtu97inxODP9AT9zguWh6AtOBZGpwtVDYVWvoMSsWoVl0BMYST-bHNI7L43TDpGNkngkcwSB4PQ2pgy_vX_Kz4rBIwD_YYpQmtdCnQ4kWeumV2XMETLA2D8piOsmb3XtC5TqhMuEjz2slMM",
+    image: "https://images.unsplash.com/photo-1557089706-68d02dfbb856?q=80&w=2574&auto=format&fit=crop",
     price: 16.00,
     tags: ["Classici"],
     isPopular: true
@@ -72,7 +73,7 @@ export const PRODUCTS: Product[] = [
     name: "Torta al Cioccolato",
     category: "Torte",
     description: "Un classico intramontabile, intenso e cremoso, per i veri amanti del cioccolato.",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCRS4ot1bxsIc3R3ZnrY_tIQTGeQqMMrTU8MoSBfZ8DyWZq3z-c-CnE-ksIf5MFr3wAor1RpTH2xoNXjpkV_aX3SH70sUl1NnTIRwM6LQ8CNVK_D2E4OX9G5hH6O7rpqFMvfKuo2XlBwNYNbsS1sVb706GaVK6X9nJyYe1CxvCBSUlBgaHKFBg0yeFA1on6Ah0gZEnXi8TGJOEAGF6fc14Vc6TikuBJZEoRHp9iG7WoHW0XELFv9n74ybZNuY8eDE59vo7R4oKqI3E",
+    image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=2589&auto=format&fit=crop",
     price: 40.00,
     tags: ["Più venduto"],
     isPopular: false
@@ -82,7 +83,7 @@ export const PRODUCTS: Product[] = [
     name: "Frollini al cioccolato",
     category: "Biscotti",
     description: "Frolla finissima arricchita con gocce di cioccolato fondente.",
-    image: "https://lh3.googleusercontent.com/aida/ADBb0ugzatrE1GRj_nZAR1bFGzZwCop7QRFTVmu7iaT_JvrGU0y_7oFk8knmxssYfTwNn-YhfGU1LrCvZWl8wGnTe2l7wU3HkpNPgjuZyVezzpWv0uMJamZ0CXzYnedwvLhBqVf3azu-Sqj9TM3hAP5N-AmVPACItg3J-21GpcxZ4SgKg1krEh-AzP8ujtLjfg8r-q08gRmxCOqnFeopaSK0H3Nuxwtx3B-PUp7TrRBoxz2NyHXyU7uWE5dgbQ",
+    image: "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?q=80&w=2640&auto=format&fit=crop",
     price: 15.00,
     tags: ["Artigianale"],
     isPopular: false
@@ -92,7 +93,7 @@ export const PRODUCTS: Product[] = [
     name: "Rotoli all'amarena",
     category: "Biscotti",
     description: "Frolla ripiena della nostra confettura artigianale di amarene selvatiche.",
-    image: "https://lh3.googleusercontent.com/aida/ADBb0uje7uYkV2vTp45Vw1K9ezqAq4ekuh0mOE8mfUg7kEkePFNVUIsRLTrMiHbRSjDeXe5wTWFCAjbROiGCqYf2k6JA4048pTOq10u3e1EzbtjnSgpzsmGEchkp025ziNps2r9WavmQ8-KlU2V5vi6lbZRuJ0UKfRz-rQ8IGKVbC3M4Mcg69b-3fsai8BM-gMlnzeojLtLgFioK_KJXRtAfT-2HTupt_5FmBHDHqG5NUb5VOwE59-kNMUtmng",
+    image: "https://images.unsplash.com/photo-1601314212814-11f8b4d8d1e2?q=80&w=2574&auto=format&fit=crop",
     price: 17.50,
     tags: ["Artigianale"],
     isPopular: false
@@ -102,7 +103,7 @@ export const PRODUCTS: Product[] = [
     name: "Ciambelline al vino",
     category: "Biscotti",
     description: "Classiche ciambelline preparate con vino locale e olio d'oliva.",
-    image: "https://lh3.googleusercontent.com/aida/ADBb0ugfomQkIW_vx8oN0oOpESQecF1Y7cuZAuwqo8h8gAeg2QkqPYnfigLKOhU9c-iBnrHpjCzWECUpa0Zn-BHprNvmPaAu4JhvAqqhKmCl5ZV8wBXUxtPDwZKQj7_W-ay4uXY4KD9V8vzmy1D9q3I8eEj2p-ldb8j0zh37XXfUsqIQCOjnH_VOzwl866k-IU19nJ1oa1PWVvIIk-K8kHuCIqsbM_KKWW4i4p6WMucnmAkhL82T09gFqmiZtPU",
+    image: "https://images.unsplash.com/photo-1621251347072-1b1e220bed78?q=80&w=2574&auto=format&fit=crop",
     price: 14.00,
     tags: ["Artigianale"],
     isPopular: false
@@ -114,7 +115,7 @@ export interface CartItem {
   quantity: number;
 }
 
-export type ViewType = 'home' | 'catalog' | 'product' | 'cart';
+export type ViewType = 'home' | 'catalog' | 'product' | 'cart' | 'admin-login' | 'admin-dashboard';
 
 interface AppContextType {
   view: ViewType;
@@ -127,6 +128,12 @@ interface AppContextType {
   clearCart: () => void;
   isCustomCakeModalOpen: boolean;
   setCustomCakeModalOpen: (open: boolean) => void;
+  products: Product[];
+  addProduct: (product: Product) => void;
+  updateProduct: (product: Product) => void;
+  deleteProduct: (productId: string) => void;
+  isAdminLoggedIn: boolean;
+  setAdminLoggedIn: (status: boolean) => void;
 }
 
 export const AppContext = createContext<AppContextType | null>(null);
@@ -136,6 +143,36 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [activePayload, selectPayload] = useState<any>(null);
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCustomCakeModalOpen, setCustomCakeModalOpen] = useState(false);
+  const [isAdminLoggedIn, setAdminLoggedIn] = useState(false);
+
+  // Initialize products from localStorage or default PRODUCTS
+  const [products, setProducts] = useState<Product[]>(() => {
+    try {
+      const stored = localStorage.getItem('luigia-cake-products');
+      if (stored) return JSON.parse(stored);
+    } catch (e) {
+      console.error(e);
+    }
+    return PRODUCTS;
+  });
+
+  const addProduct = (product: Product) => {
+    const updated = [product, ...products];
+    setProducts(updated);
+    localStorage.setItem('luigia-cake-products', JSON.stringify(updated));
+  };
+
+  const updateProduct = (product: Product) => {
+    const updated = products.map(p => p.id === product.id ? product : p);
+    setProducts(updated);
+    localStorage.setItem('luigia-cake-products', JSON.stringify(updated));
+  };
+
+  const deleteProduct = (productId: string) => {
+    const updated = products.filter(p => p.id !== productId);
+    setProducts(updated);
+    localStorage.setItem('luigia-cake-products', JSON.stringify(updated));
+  };
 
   const setView = (newView: ViewType, payload?: any) => {
     setViewState(newView);
@@ -184,7 +221,13 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
       removeFromCart,
       clearCart,
       isCustomCakeModalOpen, 
-      setCustomCakeModalOpen 
+      setCustomCakeModalOpen,
+      products,
+      addProduct,
+      updateProduct,
+      deleteProduct,
+      isAdminLoggedIn,
+      setAdminLoggedIn
     }}>
       {children}
     </AppContext.Provider>

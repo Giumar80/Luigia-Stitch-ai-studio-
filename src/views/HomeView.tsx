@@ -1,11 +1,11 @@
 import { FC, useRef } from 'react';
 import { motion } from 'motion/react';
 import { ChevronDown, ArrowRight, ArrowLeft, Plus, Truck, Leaf, Mail } from 'lucide-react';
-import { useAppContext, PRODUCTS } from '../store';
+import { useAppContext } from '../store';
 
 export const HomeView: FC = () => {
-  const { setView } = useAppContext();
-  const popularProducts = PRODUCTS.filter(p => p.isPopular);
+  const { setView, products } = useAppContext();
+  const popularProducts = products.filter(p => p.isPopular);
   const sliderRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: 'left' | 'right') => {
@@ -25,7 +25,7 @@ export const HomeView: FC = () => {
       <section className="relative min-h-[85vh] flex flex-col items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAc4fY9L-2FAbyN8ipeT1I1ZT71VonIcZHB7efpX7OIsYEGI0P3cM5UrR0EY_t4IyF8WNPMfwf3v7DnxmvmEcqGzhnpsGd1KeG1A_md33FYo8PtazINxgKA0Hq5ywpjdgsfVSf5u57owl_fOAP9NDCTflz8AhzztycWRdB0_Ax7_bOcayjlrZTQ95cOV4D62gMGLe9K_2H0ZyDgu1h-wGz8uWpQrjOT1IQ_MZR2XEIFpW18HTul1BNMryIfc89S2y3xAUmmLApWQs4" 
+            src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?q=80&w=2665&auto=format&fit=crop" 
             alt="Chef Luigia" 
             className="w-full h-full object-cover opacity-90"
           />
@@ -77,7 +77,7 @@ export const HomeView: FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 grid-rows-2 gap-6 h-auto md:h-[700px]">
           <div onClick={() => setView('catalog')} className="md:col-span-8 md:row-span-1 relative group overflow-hidden bg-surface-dim rounded-sm cursor-pointer aspect-square md:aspect-auto">
             <img 
-              src="https://lh3.googleusercontent.com/aida/ADBb0uhrzew3m5_j8UVGRco5-HAhhY59ABHGd4cRem4-McH9Rodai5cCQFHrpeiPrw2INo7gOnMU1JSxm4Vu8JA5Lkokv944fslc3rchg56pmCkC7isB1VqGES-lpwPyXcAPYVKSD5n69Vq_XDQ9zZGhOUtIYlVtAAxCgpMU2Nt9SNW89pngxCEOC9mjCMOzyVwHWllxyMPDUOT_1rW55-NcAAy_1UNkzD17R34-qDd7Wh85CJEJjNtLWd-15-w" 
+              src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?q=80&w=2574&auto=format&fit=crop" 
               className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="Torte" 
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -89,7 +89,7 @@ export const HomeView: FC = () => {
           </div>
           <div onClick={() => setView('catalog')} className="md:col-span-4 md:row-span-2 relative group overflow-hidden bg-surface-dim rounded-sm cursor-pointer min-h-[400px]">
             <img 
-              src="https://lh3.googleusercontent.com/aida/ADBb0ugfomQkIW_vx8oN0oOpESQecF1Y7cuZAuwqo8h8gAeg2QkqPYnfigLKOhU9c-iBnrHpjCzWECUpa0Zn-BHprNvmPaAu4JhvAqqhKmCl5ZV8wBXUxtPDwZKQj7_W-ay4uXY4KD9V8vzmy1D9q3I8eEj2p-ldb8j0zh37XXfUsqIQCOjnH_VOzwl866k-IU19nJ1oa1PWVvIIk-K8kHuCIqsbM_KKWW4i4p6WMucnmAkhL82T09gFqmiZtPU" 
+              src="https://images.unsplash.com/photo-1621251347072-1b1e220bed78?q=80&w=2574&auto=format&fit=crop" 
               className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="Biscotti Tradizionali" 
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/10"></div>
@@ -103,7 +103,7 @@ export const HomeView: FC = () => {
           </div>
           <div onClick={() => setView('catalog')} className="md:col-span-4 md:row-span-1 relative group overflow-hidden bg-surface-dim rounded-sm cursor-pointer aspect-square md:aspect-auto">
             <img 
-              src="https://lh3.googleusercontent.com/aida/ADBb0uje7uYkV2vTp45Vw1K9ezqAq4ekuh0mOE8mfUg7kEkePFNVUIsRLTrMiHbRSjDeXe5wTWFCAjbROiGCqYf2k6JA4048pTOq10u3e1EzbtjnSgpzsmGEchkp025ziNps2r9WavmQ8-KlU2V5vi6lbZRuJ0UKfRz-rQ8IGKVbC3M4Mcg69b-3fsai8BM-gMlnzeojLtLgFioK_KJXRtAfT-2HTupt_5FmBHDHqG5NUb5VOwE59-kNMUtmng" 
+              src="https://images.unsplash.com/photo-1601314212814-11f8b4d8d1e2?q=80&w=2574&auto=format&fit=crop" 
               className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="Eventi e Buffet" 
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -114,7 +114,7 @@ export const HomeView: FC = () => {
           </div>
           <div onClick={() => setView('catalog')} className="md:col-span-4 md:row-span-1 relative group overflow-hidden bg-surface-dim rounded-sm cursor-pointer aspect-square md:aspect-auto">
             <img 
-              src="https://lh3.googleusercontent.com/aida/ADBb0ugzatrE1GRj_nZAR1bFGzZwCop7QRFTVmu7iaT_JvrGU0y_7oFk8knmxssYfTwNn-YhfGU1LrCvZWl8wGnTe2l7wU3HkpNPgjuZyVezzpWv0uMJamZ0CXzYnedwvLhBqVf3azu-Sqj9TM3hAP5N-AmVPACItg3J-21GpcxZ4SgKg1krEh-AzP8ujtLjfg8r-q08gRmxCOqnFeopaSK0H3Nuxwtx3B-PUp7TrRBoxz2NyHXyU7uWE5dgbQ" 
+              src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?q=80&w=2640&auto=format&fit=crop" 
               className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="Idee Regalo" 
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>

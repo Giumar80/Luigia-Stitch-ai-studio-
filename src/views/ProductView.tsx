@@ -1,11 +1,11 @@
 import { FC, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronDown, ShoppingBag, Leaf, Sparkles, Heart } from 'lucide-react';
-import { useAppContext, PRODUCTS } from '../store';
+import { useAppContext } from '../store';
 
 export const ProductView: FC = () => {
-  const { activePayload, setView, addToCart } = useAppContext();
-  const product = PRODUCTS.find(p => p.id === activePayload) || PRODUCTS[0];
+  const { activePayload, setView, addToCart, products } = useAppContext();
+  const product = products.find(p => p.id === activePayload) || products[0];
   
   const [quantity, setQuantity] = useState(1);
   const [openSection, setOpenSection] = useState<string | null>('ingredienti');
@@ -57,7 +57,10 @@ export const ProductView: FC = () => {
               {product.name}
             </h1>
             
-            <p className="text-gold uppercase text-xs tracking-widest font-bold mb-6">Su Prenotazione • Prodotto Fresco</p>
+            <div className="flex items-center gap-4 mb-6">
+              <span className="text-2xl font-bold text-chocolate">€{product.price.toFixed(2)}</span>
+              <p className="text-gold uppercase text-xs tracking-widest font-bold">Su Prenotazione • Prodotto Fresco</p>
+            </div>
             
             <div className="w-16 h-px bg-gold mb-8"></div>
             

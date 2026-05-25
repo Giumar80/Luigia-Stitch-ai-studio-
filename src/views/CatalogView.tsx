@@ -1,17 +1,17 @@
 import { FC, useState } from 'react';
 import { motion } from 'motion/react';
 import { Plus } from 'lucide-react';
-import { useAppContext, PRODUCTS, Category } from '../store';
+import { useAppContext, Category } from '../store';
 
 export const CatalogView: FC = () => {
-  const { setView, addToCart, setCustomCakeModalOpen } = useAppContext();
+  const { setView, addToCart, setCustomCakeModalOpen, products } = useAppContext();
   const [activeFilter, setActiveFilter] = useState<'Tutti' | Category>('Tutti');
 
   const filters = ['Tutti', 'Torte', 'Biscotti', 'Eventi', 'Idee Regalo'];
 
   const filteredProducts = activeFilter === 'Tutti' 
-    ? PRODUCTS 
-    : PRODUCTS.filter(p => p.category === activeFilter);
+    ? products 
+    : products.filter(p => p.category === activeFilter);
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="pt-32 pb-24 min-h-screen">
@@ -66,11 +66,15 @@ export const CatalogView: FC = () => {
                 <div className="absolute inset-0 bg-chocolate/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
               </div>
               
-              <div className="px-2 flex justify-between items-start">
+              <div className="px-2 flex justify-between items-start mt-2">
                 <div onClick={() => setView('product', product.id)} className="flex-1">
                   <span className="text-[10px] uppercase tracking-widest font-bold text-chocolate/50 mb-2 block">{product.category}</span>
                   <h3 className="font-display text-2xl text-chocolate mb-2">{product.name}</h3>
-                  <p className="text-gold uppercase text-[10px] tracking-widest font-bold">Lotto Artigianale • Su Ordinazione</p>
+                  <div className="flex items-center gap-2">
+                    <span className="font-bold text-sm text-chocolate">€{product.price.toFixed(2)}</span>
+                    <span className="text-chocolate/30">•</span>
+                    <span className="text-gold uppercase text-[10px] tracking-widest font-bold">Lotto Artigianale</span>
+                  </div>
                 </div>
                 <button 
                   onClick={(e) => { e.stopPropagation(); addToCart(product, 1); }}

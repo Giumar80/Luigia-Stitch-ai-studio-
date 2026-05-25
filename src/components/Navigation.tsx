@@ -42,10 +42,14 @@ export const TopBar: FC = () => {
           </button>
         </nav>
       </div>
-      <h1 onClick={() => setView('home')} className="font-display text-2xl md:text-3xl tracking-widest text-chocolate uppercase cursor-pointer"><img src="/Luigia-Stitch-ai-studio-/logo-1764352011.jpg" alt="Luigia Cake" className="h-12 md:h-14 w-auto object-contain" /></h1>
+      <h1 onClick={() => setView('home')} className="font-display text-2xl md:text-3xl tracking-widest text-chocolate uppercase cursor-pointer">Luigia Cake</h1>
       <div className="flex items-center gap-4">
         <span className="hidden md:inline text-xs uppercase tracking-widest font-bold text-chocolate/70">334 791 4133</span>
-        <button className="text-chocolate hover:text-gold transition-colors duration-300 hidden md:block">
+        <button onClick={() => setView('admin-login')} className="text-chocolate hover:text-gold transition-colors duration-300 hidden md:flex items-center gap-1.5 ml-2">
+          <User size={20} strokeWidth={1.5} />
+          <span className="text-[10px] uppercase font-bold tracking-widest hidden lg:inline">Admin</span>
+        </button>
+        <button className="text-chocolate hover:text-gold transition-colors duration-300 hidden md:block ml-2">
           <Search size={22} strokeWidth={1.5} />
         </button>
         <button onClick={() => setView('cart')} className="relative text-chocolate hover:text-gold transition-colors duration-300">
@@ -78,7 +82,7 @@ export const MobileNav: FC = () => {
         <Sparkles size={24} strokeWidth={1.5} className="mb-1 text-gold" />
         <span className="text-[10px] uppercase tracking-widest font-bold text-gold">Torta</span>
       </button>
-      <button className="flex flex-col items-center justify-center transition-transform active:scale-95 text-chocolate/50">
+      <button onClick={() => setView('admin-login')} className={`flex flex-col items-center justify-center transition-transform active:scale-95 ${view === 'admin-login' || view === 'admin-dashboard' ? 'text-chocolate font-bold' : 'text-chocolate/50 hover:text-gold'}`}>
         <User size={24} strokeWidth={1.5} className="mb-1" />
         <span className="text-[10px] uppercase tracking-widest font-bold">Profilo</span>
       </button>
@@ -87,6 +91,8 @@ export const MobileNav: FC = () => {
 };
 
 export const Footer: FC = () => {
+  const { setView } = useAppContext();
+  
   return (
     <footer className="bg-surface-dim py-16 px-4 md:px-16 border-t border-outline/30 mt-auto">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
@@ -121,8 +127,7 @@ export const Footer: FC = () => {
           <ul className="space-y-3 text-sm text-chocolate/80">
             <li><a href="#" className="hover:text-gold transition-colors">Su di noi</a></li>
             <li><a href="#" className="hover:text-gold transition-colors">Contattaci</a></li>
-            <li><a href="#" className="hover:text-gold transition-colors">Mappa del sito</a></li>
-            <li><a href="#" className="hover:text-gold transition-colors">Negozi</a></li>
+            <li><button onClick={() => setView('admin-login')} className="hover:text-gold transition-colors text-left">Area Riservata (Admin)</button></li>
           </ul>
         </div>
         <div>

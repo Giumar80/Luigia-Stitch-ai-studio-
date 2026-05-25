@@ -1,10 +1,10 @@
 import { FC, useState, FormEvent } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Trash2, Heart, CheckCircle, Truck, ShoppingBag, Plus, Minus, Sparkles, Send, MapPin, Calendar, HelpCircle } from 'lucide-react';
-import { useAppContext, PRODUCTS } from '../store';
+import { useAppContext } from '../store';
 
 export const CartView: FC = () => {
-  const { cart, updateQuantity, removeFromCart, setView, addToCart, clearCart } = useAppContext();
+  const { cart, updateQuantity, removeFromCart, setView, addToCart, clearCart, products } = useAppContext();
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -19,7 +19,7 @@ export const CartView: FC = () => {
   });
 
   // Cross sells (items not in cart)
-  const crossSells = PRODUCTS.filter(p => !cart.some(c => c.product.id === p.id)).slice(0, 2);
+  const crossSells = products.filter(p => !cart.some(c => c.product.id === p.id)).slice(0, 2);
 
   const handleSubmitRequest = (e: FormEvent) => {
     e.preventDefault();
