@@ -1,6 +1,6 @@
 import { FC, useState, FormEvent } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { LogOut, Plus, Trash2, Edit2, Image as ImageIcon } from 'lucide-react';
+import { LogOut, Plus, Trash2, Edit2, Image as ImageIcon, Package, LayoutGrid, Star } from 'lucide-react';
 import { useAppContext, Category, Product } from '../store';
 
 export const AdminDashboardView: FC = () => {
@@ -69,6 +69,10 @@ export const AdminDashboardView: FC = () => {
     setIsAdding(false);
   };
 
+  const totalProducts = products.length;
+  const categoriesCount = new Set(products.map(p => p.category)).size;
+  const popularCount = products.filter(p => p.isPopular).length;
+
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="pt-28 pb-32 min-h-screen bg-cream px-4 md:px-16">
       
@@ -85,6 +89,36 @@ export const AdminDashboardView: FC = () => {
             <LogOut size={16} /> Esci
           </button>
         </header>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div className="bg-white border border-outline/30 p-6 rounded-sm shadow-sm flex items-center gap-4">
+            <div className="w-12 h-12 bg-surface-low rounded-full flex items-center justify-center text-chocolate">
+              <Package size={20} />
+            </div>
+            <div>
+              <p className="text-[10px] uppercase font-bold tracking-widest text-chocolate/50 mb-1">Totale Prodotti</p>
+              <p className="font-display text-3xl text-chocolate">{totalProducts}</p>
+            </div>
+          </div>
+          <div className="bg-white border border-outline/30 p-6 rounded-sm shadow-sm flex items-center gap-4">
+            <div className="w-12 h-12 bg-surface-low rounded-full flex items-center justify-center text-chocolate">
+              <LayoutGrid size={20} />
+            </div>
+            <div>
+              <p className="text-[10px] uppercase font-bold tracking-widest text-chocolate/50 mb-1">Categorie Attive</p>
+              <p className="font-display text-3xl text-chocolate">{categoriesCount}</p>
+            </div>
+          </div>
+          <div className="bg-white border border-outline/30 p-6 rounded-sm shadow-sm flex items-center gap-4">
+            <div className="w-12 h-12 bg-surface-low rounded-full flex items-center justify-center text-gold">
+              <Star size={20} />
+            </div>
+            <div>
+              <p className="text-[10px] uppercase font-bold tracking-widest text-chocolate/50 mb-1">In Evidenza (Home)</p>
+              <p className="font-display text-3xl text-chocolate">{popularCount}</p>
+            </div>
+          </div>
+        </div>
 
         <div className="mb-8">
           <button 
